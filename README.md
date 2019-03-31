@@ -42,3 +42,9 @@ Once the app is deployed, user will be navigated to a Sign-in screen.
 For a new user, navigate to the 'Sign-up' option and create a new user.
 
 Once a user is created, navigate to 'Sign-in' option and log into the application and there you go! 
+
+Login Screen 
+![Screenshot](Login.png)
+
+User Registration Screen 
+![Screenshot](Registration.png)
