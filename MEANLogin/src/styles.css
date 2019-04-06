@@ -12,6 +12,22 @@ body {
   height: 100vh;
 }
 
+tw-link, tw-hook{
+  display: block;
+}
+
+.mat-stroked-button{
+  background-color: #56baed !important;;
+  line-height: 23px !important;
+  margin: 0.3% !important;
+}
+tw-story{
+  width: auto;
+  margin: auto;
+  min-height: 90%;
+  font: inherit;
+}
+
 a {
   color: #92badd;
   display:inline-block;

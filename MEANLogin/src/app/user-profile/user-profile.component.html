@@ -1,33 +1,168 @@
-<table *ngIf="userDetails" class="table-fill">
-  <thead>
-      <tr>
-          <th colspan="2" class="text-center">User Profile</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>First Name</td>
-          <td>{{userDetails.fullName.split(' ')[0]}}</td>
-      </tr>
-      <tr>
-          <td>Last Name</td>
-          <td>{{userDetails.fullName.split(' ')[1]}}</td>
-      </tr>
-      <tr>
-          <td>Email</td>
-          <td>{{userDetails.email}}</td>
-      </tr>
-      <tr>
-          <td colspan="2" class="text-center">
-              <input type="button" (click)="onLogout()" value="Logout" />
-          </td>
-      </tr>
-  </tbody>
-</table>
+<div style="text-align: right;height:5%;"><button mat-stroked-button (click)="onLogout()" value="Logout">Logout</button></div>
+<tw-story></tw-story>
 
 
-<div>
+<tw-storydata name="Test" startnode="1" creator="Twine" creator-version="2.2.1" ifid="BF398DD7-27AF-4400-AFD5-F0E1E0EF0E54" zoom="1" format="Harlowe" format-version="2.1.0" options="" hidden>
+  <style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style>
+  <script role="script" id="twine-user-script" type="text/twine-javascript"></script>
+
+  <tw-passagedata pid="1" name="Untitled Passage" tags="" position="540,247" size="100,100">
+    Hello !
+
+    Welcome to Chapter &quot;test&quot;
+
+    This paragraph contains the introduction to the chapter. 
+
+    Select an option
+
+    [[Tell me more]]
+    [[That was okay]]
+    [[I&#39;m not interested]]
+  </tw-passagedata>
+  <tw-passagedata pid="2" name="Tell me more" tags="" position="337,416" size="100,100">
+    (set: $testvariable to 1)
+
+    Here you have more information
+
+    [[Go to next passage]]
+  </tw-passagedata>
+  <tw-passagedata pid="3" name="That was okay" tags="" position="540,385" size="100,100">
+    (set: $testvariable to 2)
+
+    You found it okay. A little more information.
+
+    [[Go to next passage]]
+  </tw-passagedata>
+  <tw-passagedata pid="4" name="I&#39;m not interested" tags="" position="690,397" size="100,100">
+    (set: $testvariable to 3)
+
+    You are not interested. Very little information.
+
+    [[Go to next passage]]
+  </tw-passagedata>
+  <tw-passagedata pid="5" name="Go to next passage" tags="" position="559,617" size="100,100">
+    (if: $testvariable is 1)[
+    Test variable is 1. You selected option 1A]
+    (if: $testvariable is 2)[
+    Test variable is 2. You selected option 1B]
+    (if: $testvariable is 3)[
+    Test variable is 1. You selected option 1C]
+
+    [[Go to section 2A]]
+    [[Go to section 2B]]
+    [[Go to section 2C]]
+  </tw-passagedata>
+  <tw-passagedata pid="6" name="Go to section 2A" tags="" position="409,767" size="100,100">
+    (set: $testvariable2 to &quot;2A&quot;)
+
+    This contains text for section 2A
+
+    [[Next]]
+  </tw-passagedata>
+  <tw-passagedata pid="7" name="Go to section 2B" tags="" position="559,767" size="100,100">
+    (set: $testvariable2 to &quot;2B&quot;)
+
+    This contains text for section 2B
+
+    [[Next]]
+  </tw-passagedata>
+  <tw-passagedata pid="8" name="Go to section 2C" tags="" position="709,767" size="100,100">
+    (set: $testvariable2 to &quot;2C&quot;)
+
+    This contains text for section 2C
+
+    [[Next]]
+  </tw-passagedata>
+  <tw-passagedata pid="9" name="Next" tags="" position="556,916" size="100,100">
+    You selected option $testvariable2
+
+
+    [[Go to exercises]]
+  </tw-passagedata>
+  <tw-passagedata pid="10" name="Go to exercises" tags="" position="556,1066" size="100,100">
+    (set: $noanswer to 0)
+    **Question 1 - Text of question 1. If you add A+B, what is the value of X+Y?**
+
+    [This is the correct answer]&lt;ansCorrect| 
+    [This is wrong]&lt;ans1| 
+    [This is wrong]&lt;ans2| 
+    [This is wrong]&lt;ans3|
+
+    []&lt;explanation|
+
+
+    []&lt;next|
 
 
 
-	</div>
+    (click: ?ansCorrect)[(set: $noanswer to it + 1){{ '{' }}(if: $noanswer is 1)[(set: $nocorrectanswer to it+1)]{{ '}' }}(enchant: ?ansCorrect, (color: green) + (text-style:&#39;bold&#39;)) (replace: ?explanation)[Yes! You are right] (replace: ?next)[ [[Next Question-&gt;Question2]]]]
+
+    (click: ?ans1)[(set: $noanswer to it + 1)(enchant: ?ans1, (color: red) + (text-style:&#39;bold&#39;)) (replace: ?explanation)[Wrong answer]]
+    (click: ?ans2)[(set: $noanswer to it + 1)(enchant: ?ans2, (color: red) + (text-style:&#39;bold&#39;)) (replace: ?explanation)[Wrong answer]]
+    (click: ?ans3)[(set: $noanswer to it + 1)(enchant: ?ans3, (color: red) + (text-style:&#39;bold&#39;)) (replace: ?explanation)[Wrong answer]]
+
+  </tw-passagedata>
+  <tw-passagedata pid="11" name="Question2" tags="" position="556,1216" size="100,100">
+    (set: $noanswer to 0)
+    **Question 2 - This is text**
+
+    [This is the correct answer]&lt;ansCorrect| 
+    [This is wrong]&lt;ans1| 
+    [This is wrong]&lt;ans2| 
+    [This is wrong]&lt;ans3|
+
+    []&lt;explanation|
+
+
+    []&lt;next|
+
+
+
+    (click: ?ansCorrect)[(set: $noanswer to it + 1){{ '{' }}(if: $noanswer is 1)[(set: $nocorrectanswer to it+1)]{{ '}' }}(enchant: ?ansCorrect, (color: green) + (text-style:&#39;bold&#39;)) (replace: ?explanation)[Yes! You are right] (replace: ?next)[ [[Next Question-&gt;Question3]]]]
+
+    (click: ?ans1)[(set: $noanswer to it + 1)(enchant: ?ans1, (color: red) + (text-style:&#39;bold&#39;)) (replace: ?explanation)[Wrong answer]]
+    (click: ?ans2)[(set: $noanswer to it + 1)(enchant: ?ans2, (color: red) + (text-style:&#39;bold&#39;)) (replace: ?explanation)[Wrong answer]]
+    (click: ?ans3)[(set: $noanswer to it + 1)(enchant: ?ans3, (color: red) + (text-style:&#39;bold&#39;)) (replace: ?explanation)[Wrong answer]]
+
+
+
+
+  </tw-passagedata>
+  <tw-passagedata pid="12" name="Question3" tags="" position="556,1366" size="100,100">
+    (set: $noanswer to 0)
+    **Question 3 - This is text**
+
+    [This is the correct answer]&lt;ansCorrect| 
+    [This is wrong]&lt;ans1| 
+    [This is wrong]&lt;ans2| 
+    [This is wrong]&lt;ans3|
+
+    []&lt;explanation|
+
+
+    []&lt;next|
+
+
+
+    (click: ?ansCorrect)[(set: $noanswer to it + 1){{ '{' }}(if: $noanswer is 1)[(set: $nocorrectanswer to it+1)]{{ '}' }}(enchant: ?ansCorrect, (color: green) + (text-style:&#39;bold&#39;)) (replace: ?explanation)[Yes! You are right] (replace: ?next)[ [[End chapter]]]]
+
+    (click: ?ans1)[(set: $noanswer to it + 1)(enchant: ?ans1, (color: red) + (text-style:&#39;bold&#39;)) (replace: ?explanation)[Wrong answer]]
+    (click: ?ans2)[(set: $noanswer to it + 1)(enchant: ?ans2, (color: red) + (text-style:&#39;bold&#39;)) (replace: ?explanation)[Wrong answer]]
+    (click: ?ans3)[(set: $noanswer to it + 1)(enchant: ?ans3, (color: red) + (text-style:&#39;bold&#39;)) (replace: ?explanation)[Wrong answer]]
+
+
+
+  </tw-passagedata>
+  <tw-passagedata pid="13" name="End chapter" tags="" position="556,1516" size="100,100">
+    (set: $chaptername to &quot;Test&quot;)
+    (set: $totalnoanswer to 3)
+
+    **Congratulations! You have completed $chaptername!**
+
+    (link:&quot;Check how many answers you got right&quot;)[(transition:&quot;pulse&quot;)+(transition-time: 2s)[
+
+    **Number of correct answers:** $nocorrectanswer / $totalnoanswer
+    ]]
+  </tw-passagedata>
+</tw-storydata>
+
