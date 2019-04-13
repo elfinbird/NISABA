@@ -48,3 +48,8 @@ Login Screen
 
 User Registration Screen 
 ![Screenshot](Registration.png)
+
+Post login, user will be navigated to a TWINE story (press F5 if story does not load post login)
+TODO:
+1. Save pitstops/progress
+2. Make story user specific
